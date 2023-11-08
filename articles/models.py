@@ -17,3 +17,13 @@ class Article(models.Model):
 
     # 방법3. (권장)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+
+    # comment_set = 장고가 자동으로 추가해주는 컬럼
+    # user_id = 장고가 자동으로 추가해주는 컬럼
+
+class Comment(models.Model):
+    content = models.TextField()
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    # article_id = 장고가 자동으로 추가해주는 컬럼
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    # user_id = 장고가 자동으로 추가해주는 컬럼
